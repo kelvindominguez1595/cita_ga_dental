@@ -3,7 +3,12 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3>Listado </h3>
+            <div class="d-flex justify-content-between">
+                <h3>Listado </h3>
+                <a href="{{ url()->previous() }}" class="btn btn-primary">< Volver</a>
+
+            </div>
+
         </div>
         <div class="card-body">
             <table class="table">

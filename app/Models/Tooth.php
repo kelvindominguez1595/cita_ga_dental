@@ -12,9 +12,9 @@ class Tooth extends Model
 {
     use HasFactory;
 
-    public function patient()
+    public function chequeo()
     {
-        return $this->belongsTo(Chequeo::class);
+        return $this->belongsTo(Chequeo::class, 'chequeo_id');
     }
 }
 

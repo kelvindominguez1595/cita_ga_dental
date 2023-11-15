@@ -51,7 +51,7 @@ class ChequeoController extends Controller
     {
 
         $chequeo = Chequeo::find($id);
-        $dientes = Tooth::where('patient_id', $chequeo->patient_id)->get(); // obtengo todos los dientes
+        $dientes = Tooth::where('chequeo_id', $id)->get(); // obtengo todos los dientes
         return view('chequeo.edit', compact('chequeo', 'dientes'));
     }
 

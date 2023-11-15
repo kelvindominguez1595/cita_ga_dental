@@ -49,7 +49,7 @@ class PatientController extends Controller
         $this->validate($request, $rules, $messages);
 
         User::create(
-            $request->only('name','email','edad','address','phone')
+            $request->only('name','email','edad','address','phone', 'whatsapp', 'red_social', 'musica', 'profesion', 'alteraciones', 'como_conocio', 'historial')
             + [
                 'role' => 'paciente',
                 'password' => bcrypt($request->input('password'))
@@ -99,7 +99,7 @@ class PatientController extends Controller
         $this->validate($request, $rules, $messages);
         $user = User::Patients()->findOrFail($id);
 
-        $data = $request->only('name','email','edad','address','phone');
+        $data = $request->only('name','email','edad','address', 'phone', 'whatsapp', 'red_social', 'musica', 'profesion', 'alteraciones', 'como_conocio', 'historial');
         $password = $request->input('password');
 
         if($password)

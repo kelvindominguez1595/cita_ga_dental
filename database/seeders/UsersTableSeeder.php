@@ -25,6 +25,13 @@ class UsersTableSeeder extends Seeder
             'phone' => '0968000009',
             'role' => 'admin',
             'imagen' => '',
+            'whatsapp'=>'',
+            'red_social'=>'',
+            'musica'=>'',
+            'profesion'=>'',
+            'alteraciones'=>'',
+            'como_conocio'=>'',
+            'historial'=>'',
         ]);
 
         User::create([
@@ -34,6 +41,13 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('12345678'), // password
             'role' => 'paciente',
             'imagen' => '',
+            'whatsapp'=>'',
+            'red_social'=>'',
+            'musica'=>'',
+            'profesion'=>'',
+            'alteraciones'=>'',
+            'como_conocio'=>'',
+            'historial'=>'',
         ]);
 
         User::create([
@@ -43,6 +57,13 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('12345678'), // password
             'role' => 'doctor',
             'imagen' => '',
+            'whatsapp'=>'',
+            'red_social'=>'',
+            'musica'=>'',
+            'profesion'=>'',
+            'alteraciones'=>'',
+            'como_conocio'=>'',
+            'historial'=>''
         ]);
     }
 }

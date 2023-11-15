@@ -30,7 +30,7 @@
                     <input type="date" id="restore_date" name="restore_date" class="form-control" style="max-width: 280px;">
                 </div>
                 <!-- Agregar aquí el componente de calendario si es necesario -->
-                <button type="submit" class="btn btn-danger">Restaurar</button>
+               
             </form>
 
             <div style="margin-top: 40px;">

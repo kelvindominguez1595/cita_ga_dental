@@ -90,7 +90,7 @@ class OdontogramaController extends Controller
             $tooth->color = $diente['color'];
             $tooth->icono = $diente['simbolo'];
             $tooth->tooth_number = $diente['numero'];
-            $tooth->patient_id = $data['pacientes'];
+            $tooth->chequeo_id = $chequeo->id;
             $tooth->save();
         }
 

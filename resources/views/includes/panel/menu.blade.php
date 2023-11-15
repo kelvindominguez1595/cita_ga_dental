@@ -29,10 +29,13 @@
     <!-- Navigation -->
     <ul class="navbar-nav mb-md-3">
 
-    <li class="nav-item  active ">
-    <a class="nav-link  active " href="{{ url('/reportes/servicios/line') }}">
-        <i class="ni ni-chart-bar-32 text-default"></i> Reporte Servicios
+    <li class="nav-item active">
+    <a class="nav-link active" href="{{ url('/reportes/index') }}">
+        <i class="fas fa-file-medical text-default"></i> Historial Paciente
     </a>
+
+
+
 
     <li class="nav-item  active ">
     <a class="nav-link  active " href="{{ url('/reportes/citas/line') }}">

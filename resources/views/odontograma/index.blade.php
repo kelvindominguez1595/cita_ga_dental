@@ -156,7 +156,7 @@
                     <div class="col-3">
                         <div class="informacion-item">
                             <div class="informacion-icon-u icon-rojo"
-                                onclick="seleccionarSimbolo(this,'U', 'red')"style="font-size: 27px;">U</div>
+                                onclick="seleccionarSimbolo(this,'○', 'red')"style="font-size: 40px;">○</div>
 
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="col-3">
                         <div class="informacion-item">
                             <div class="informacion-icon-u icon-azul"
-                                onclick="seleccionarSimbolo(this,'U', 'blue')"style="font-size: 27px;">U</div>
+                                onclick="seleccionarSimbolo(this,'○', 'blue')"style="font-size: 40px;">○</div>
 
                         </div>
                     </div>

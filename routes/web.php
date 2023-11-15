@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OdontogramaController;
 use App\Http\Controllers\ChequeoController;
 use App\Http\Controllers\BackupController;
+use App\Http\Controllers\Admin\ChartController;
 
 
 
@@ -37,7 +38,28 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/reportes/citas/line', [App\Http\Controllers\admin\ChartController::class, 'appointments']);
     Route::get('/reportes/doctors/column', [App\Http\Controllers\admin\ChartController::class, 'doctors']);
     Route::get('/reportes/doctors/column/data', [App\Http\Controllers\admin\ChartController::class, 'doctorsJson']);
-    Route::get('/reportes/servicios/line', [App\Http\Controllers\admin\ChartController::class, 'servicios']);
+    
+    // historial
+   
+    Route::get('/reportes/historial', [App\Http\Controllers\Admin\ChartController::class, 'patientHistory'])->name('charts.edit');
+    Route::post('/guardar_historial', [App\Http\Controllers\Admin\ChartController::class, 'guardarHistorial']);
+    Route::get('/reportes/index', [ChartController::class, 'index'])->name('reportes.index');
+    Route::get('/paciente/seleccionar', [ChartController::class, 'selectPatient'])->name('patient.select');
+    Route::post('/guardar_historial', [HistorialController::class, 'guardarHistorial'])->name('guardar_historial');
+    Route::get('/historial/{id}', 'ChartController@show')->name('historial.show');
+
+    Route::get('/pacientes/{id}/ver-historial', 'ChartController@showHistorial')->name('ver_historial');
+    Route::get('/pacientes/{id}/editar-historial', 'Admin\ChartController@editHistorial')->name('editar_historial');
+
+    //subir archivo 
+    
+    Route::get('/pacientes/search', 'PacientesController@search');
+    Route::post('/upload/file', 'UploadController@upload')->name('upload.file');
+
+
+
+
+
 });
 
 Route::middleware(['auth', 'doctor'])->group(function () {

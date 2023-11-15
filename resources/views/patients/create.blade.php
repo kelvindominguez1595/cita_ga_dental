@@ -46,6 +46,11 @@
                     <label for="edad">Ingrese la Edad</label>
                     <input type="text" name="edad" class="form-control" value="{{ old('edad') }}">
                 </div>
+                
+                <div class="form-group">
+                    <label for="dui">Dui</label>
+                    <input type="text" name="dui" class="form-control" value="{{ old('dui') }}">
+                </div>
                 <div class="form-group">
                     <label for="address">Dirección</label>
                     <input type="text" name="address" class="form-control" value="{{ old('address') }}">
@@ -57,6 +62,34 @@
                     <input type="text" name="phone"  class="form-control" value="{{ old('phone')}}">
                      </div>
                 </div>
+                <div class="form-group">
+                    <label for="whatsapp">Whatsapp</label>
+                    <input type="text" name="whatsapp" class="form-control" value="{{ old('whatsapp') }}">
+                </div>
+                <div class="form-group">
+                    <label for="red_social">Red social</label>
+                    <input type="text" name="red_social" class="form-control" value="{{ old('red_social') }}">
+                </div><div class="form-group">
+                    <label for="musica">Musica preferida</label>
+                    <input type="text" name="musica" class="form-control" value="{{ old('musica') }}">
+                </div>
+                <div class="form-group">
+                    <label for="profesion">Profesion</label>
+                    <input type="text" name="profesion" class="form-control" value="{{ old('profesion') }}">
+                </div>
+                <div class="form-group">
+                    <label for="alteraciones">Alteraciones sistematicas / Medicamentos actuales</label>
+                    <input type="text" name="alteraciones" class="form-control" value="{{ old('alteraciones') }}">
+                </div>
+                <div class="form-group">
+                    <label for="como_conocio">Como Conocia GA Dental</label>
+                    <input type="text" name="como_conocio" class="form-control" value="{{ old('como_conocio') }}">
+                </div>
+                <div class="form-group">
+                    <label for="historial">Historia odontológico</label>
+                    <input type="text" name="historial" class="form-control" value="{{ old('historial') }}">
+                </div>
+
                 <div class="form-group">
                     <label for="password">Contraseña</label>
                     <input type="text" name="password" class="form-control" value="{{ old('password', Str::random(8)) }}">

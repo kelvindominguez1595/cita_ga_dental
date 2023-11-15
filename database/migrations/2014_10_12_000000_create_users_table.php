@@ -26,6 +26,13 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('imagen')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('red_social')->nullable();
+            $table->string('musica')->nullable();
+            $table->string('profesion')->nullable();
+            $table->text('alteraciones')->nullable();
+            $table->string('como_conocio')->nullable();
+            $table->text('historial')->nullable();
             $table->string('role');
 
             $table->rememberToken();
