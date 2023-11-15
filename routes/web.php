@@ -5,8 +5,7 @@ use App\Http\Controllers\OdontogramaController;
 use App\Http\Controllers\ChequeoController;
 use App\Http\Controllers\BackupController;
 use App\Http\Controllers\Admin\ChartController;
-
-
+use App\Http\Controllers\RadiografiasController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -38,38 +37,32 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/reportes/citas/line', [App\Http\Controllers\admin\ChartController::class, 'appointments']);
     Route::get('/reportes/doctors/column', [App\Http\Controllers\admin\ChartController::class, 'doctors']);
     Route::get('/reportes/doctors/column/data', [App\Http\Controllers\admin\ChartController::class, 'doctorsJson']);
-    
+
     // historial
-   
+
     Route::get('/reportes/historial', [App\Http\Controllers\Admin\ChartController::class, 'patientHistory'])->name('charts.edit');
     Route::post('/guardar_historial', [App\Http\Controllers\Admin\ChartController::class, 'guardarHistorial']);
     Route::get('/reportes/index', [ChartController::class, 'index'])->name('reportes.index');
-    Route::get('/paciente/seleccionar', [ChartController::class, 'selectPatient'])->name('patient.select');
+    Route::get('/paciente/seleccionar', [ChartController::class, 'selectPatient']);
     Route::post('/guardar_historial', [HistorialController::class, 'guardarHistorial'])->name('guardar_historial');
     Route::get('/historial/{id}', 'ChartController@show')->name('historial.show');
 
     Route::get('/pacientes/{id}/ver-historial', 'ChartController@showHistorial')->name('ver_historial');
     Route::get('/pacientes/{id}/editar-historial', 'Admin\ChartController@editHistorial')->name('editar_historial');
 
-    //subir archivo 
-    
+    //subir archivo
+
     Route::get('/pacientes/search', 'PacientesController@search');
     Route::post('/upload/file', 'UploadController@upload')->name('upload.file');
-
-
-
-
-
 });
 
 Route::middleware(['auth', 'doctor'])->group(function () {
     Route::get('/horario', [App\Http\Controllers\doctor\HorarioController::class, 'edit']);
     Route::post('/horario', [App\Http\Controllers\doctor\HorarioController::class, 'store']);
-
 });
 
-Route::middleware('auth')->group(function(){
-   
+Route::middleware('auth')->group(function () {
+
     Route::get('/reservarcitas/create', [App\Http\Controllers\AppointmentController::class, 'create']);
     Route::post('/reservarcitas', [App\Http\Controllers\AppointmentController::class, 'store']);
     Route::get('/miscitas', [App\Http\Controllers\AppointmentController::class, 'index']);
@@ -78,41 +71,38 @@ Route::middleware('auth')->group(function(){
     Route::post('/miscitas/{appointment}/confirm', [App\Http\Controllers\AppointmentController::class, 'confirm']);
 
     Route::get('/miscitas/{appointment}/cancel', [App\Http\Controllers\AppointmentController::class, 'formCancel']);
-    
+
     //JSON
     Route::get('/especialidades/{specialty}/medicos', [App\Http\Controllers\Api\SpecialtyController::class, 'doctors']);
-    Route::get('/horario/horas', [App\Http\Controllers\Api\HorarioController::class, 'hours']); 
+    Route::get('/horario/horas', [App\Http\Controllers\Api\HorarioController::class, 'hours']);
 
-// odontograma
+    // odontograma
 
+    Route::resource('radiografias', RadiografiasController::class)->names('radiografias');
+    // Ruta para mostrar el odontograma
+    Route::get('/odontograma', [OdontogramaController::class, 'show'])->name('odontograma.show');
 
-// Ruta para mostrar el odontograma
-Route::get('/odontograma', [OdontogramaController::class, 'show'])->name('odontograma.show');
+    // Ruta para actualizar el color de un diente
+    Route::put('/odontograma/{tooth}', [OdontogramaController::class, 'update'])->name('odontograma.update');
 
-// Ruta para actualizar el color de un diente
-Route::put('/odontograma/{tooth}', [OdontogramaController::class, 'update'])->name('odontograma.update');
-
-Route::get('/odontograma/{id}/edit', [OdontogramaController::class, 'edit'])->name('odontograma.edit');
-Route::post('/guardar-cambios', [OdontogramaController::class, 'guardarCambios'])->name('guardarCambios');
-
-
-//Chequeo
-Route::get('/chequeo', [ChequeoController::class, 'mostrarChequeos'])->name('chequeo.index');
-
-Route::get('/chequeos/{chequeo}/edit', [App\Http\Controllers\ChequeoController::class, 'edit'])->name('chequeo.edit');
-Route::get('/chequeos/create', [App\Http\Controllers\ChequeoController::class, 'create'])->name('chequeo.create');
-Route::delete('/chequeos/{chequeo}', [App\Http\Controllers\ChequeoController::class, 'destroy'])->name('chequeo.destroy');
-Route::post('/chequeo', [ChequeoController::class, 'store'])->name('chequeo.store');
+    Route::get('/odontograma/{id}/edit', [OdontogramaController::class, 'edit'])->name('odontograma.edit');
+    Route::post('/guardar-cambios', [OdontogramaController::class, 'guardarCambios'])->name('guardarCambios');
 
 
-//respaldo 
-Route::get('/backup', [BackupController::class, 'index'])->name('backup.index');
-Route::post('/backup', [BackupController::class, 'performBackup'])->name('backup.perform');
-Route::post('/backup/restore', [BackupController::class, 'restore'])->name('backup.restore');
-Route::get('/backup/downloadPhpMyAdmin', [BackupController::class, 'downloadPhpMyAdmin'])->name('backup.downloadPhpMyAdmin');
-Route::get('/backup/download-mysql', [BackupController::class, 'downloadMySQL'])->name('backup.downloadMySQL');
-Route::get('/backup/download/users', 'BackupController@downloadUsers')->name('backup.downloadUsers');
+    //Chequeo
+    Route::get('/chequeo', [ChequeoController::class, 'mostrarChequeos'])->name('chequeo.index');
+
+    Route::get('/chequeos/{chequeo}/edit', [App\Http\Controllers\ChequeoController::class, 'edit'])->name('chequeo.edit');
+    Route::get('/chequeos/create', [App\Http\Controllers\ChequeoController::class, 'create'])->name('chequeo.create');
+    Route::delete('/chequeos/{chequeo}', [App\Http\Controllers\ChequeoController::class, 'destroy'])->name('chequeo.destroy');
+    Route::post('/chequeo', [ChequeoController::class, 'store'])->name('chequeo.store');
 
 
-
+    //respaldo
+    Route::get('/backup', [BackupController::class, 'index'])->name('backup.index');
+    Route::post('/backup', [BackupController::class, 'performBackup'])->name('backup.perform');
+    Route::post('/backup/restore', [BackupController::class, 'restore'])->name('backup.restore');
+    Route::get('/backup/downloadPhpMyAdmin', [BackupController::class, 'downloadPhpMyAdmin'])->name('backup.downloadPhpMyAdmin');
+    Route::get('/backup/download-mysql', [BackupController::class, 'downloadMySQL'])->name('backup.downloadMySQL');
+    Route::get('/backup/download/users', 'BackupController@downloadUsers')->name('backup.downloadUsers');
 });
