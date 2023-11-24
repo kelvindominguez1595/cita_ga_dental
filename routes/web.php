@@ -81,6 +81,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('radiografias', RadiografiasController::class)->names('radiografias');
     // Ruta para mostrar el odontograma
     Route::get('/odontograma', [OdontogramaController::class, 'show'])->name('odontograma.show');
+    Route::get('/filtroDinamico', [OdontogramaController::class, 'filtroDinamico'])->name('filtroDinamico');
 
     // Ruta para actualizar el color de un diente
     Route::put('/odontograma/{tooth}', [OdontogramaController::class, 'update'])->name('odontograma.update');

@@ -11,6 +11,28 @@ use App\Http\Controllers\Controller;
 
 class OdontogramaController extends Controller
 {
+
+
+    public function filtroDinamico(Request $request)
+    {
+        $term = trim($request->term);
+        $tipo = $request->tipo;
+        $patients = User::select('id', 'name AS text')
+            ->where('name', 'LIKE', '%' . $term . '%')
+            ->where('role', $tipo)->simplePaginate(10);
+        $morePages = true;
+        if (empty($patients->nextPageUrl())) {
+            $morePages = false;
+        }
+        $results = [
+            'results' => $patients->items(),
+            'pagination' => [
+                'more' => $morePages,
+            ],
+        ];
+
+        return response()->json($results);
+    }
     // Método para mostrar el odontograma
     public function show()
     {

@@ -1,6 +1,10 @@
 @extends('layouts.panel')
 
-
+@section('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+@endsection
 @section('content')
 
     <!-- Agrega el meta tag para el token CSRF -->
@@ -17,6 +21,57 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Incluye los archivos CSS y JS de select2 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Código JavaScript personalizado -->
+    <script>
+        $(document).ready(function() {
+            // Resto del código JavaScript ...
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#pacientes').select2({
+                theme: 'bootstrap4',
+                placeholder: "Seleccione...",
+                allowClear: true,
+                ajax: {
+                    url: '../filtroDinamico?tipo=paciente',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            term: params.term || "",
+                            page: params.page || 1,
+                        };
+                    },
+                    cache: true,
+                }
+            });
+            $('#doctores').select2({
+                theme: 'bootstrap4',
+                placeholder: "Seleccione...",
+                allowClear: true,
+                ajax: {
+                    url: '../filtroDinamico?tipo=doctor',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            term: params.term || "",
+                            page: params.page || 1,
+                        };
+                    },
+                    cache: true,
+                }
+            });
+        });
+    </script>
 @endsection
 
 <div class="card shadow">
@@ -37,9 +92,7 @@
                     <select id="pacientes" class="form-control" title="Seleccionar pacientes"
                         style="background-color: #5e72e4; color: white; margin-top: 10px;">
                         <option disabled selected>Seleccionar</option>
-                        @foreach ($patients as $paciente)
-                            <option value="{{ $paciente->id }}">{{ $paciente->name }}</option>
-                        @endforeach
+
                     </select>
                 </div>
 
@@ -50,9 +103,7 @@
                     <select id="doctores" class="form-control" title="Seleccionar doctores"
                         style="background-color: #5e72e4; color: white; margin-top: 10px;">
                         <option disabled selected>Seleccionar</option>
-                        @foreach ($doctors as $paciente)
-                            <option value="{{ $paciente->id }}">{{ $paciente->name }}</option>
-                        @endforeach
+
                     </select>
                 </div>
 
