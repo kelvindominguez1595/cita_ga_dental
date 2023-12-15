@@ -221,59 +221,59 @@
                             @else
                                 @if ($item->color == 'blue' && $item->icono == '↺')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_curva_azul.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_curva_azul.png') }}">
                                 @endif
                                 @if ($item->color == 'red' && $item->icono == '↺')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_curva_roja.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_curva_roja.png') }}">
                                 @endif
                                 @if ($item->color == 'blue' && $item->icono == '║')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_pareja_azul.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_pareja_azul.png') }}">
                                 @endif
                                 @if ($item->color == 'red' && $item->icono == '║')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_pareja_roja.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_pareja_roja.png') }}">
                                 @endif
                                 @if ($item->color == 'blue' && $item->icono == '○')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/circulo_sinrelleno_azul.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/circulo_sinrelleno_azul.png') }}">
                                 @endif
                                 @if ($item->color == 'red' && $item->icono == '○')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/circulo_sinrelleno_rojo.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/circulo_sinrelleno_rojo.png') }}">
                                 @endif
                                 @if ($item->color == 'blue' && $item->icono == '🡠')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_izquierda_azul.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_izquierda_azul.png') }}">
                                 @endif
                                 @if ($item->color == 'red' && $item->icono == '🡠')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_izquierda_roja.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_izquierda_roja.png') }}">
                                 @endif
                                 @if ($item->color == 'blue' && $item->icono == '🡢')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_derecha_azul.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_derecha_azul.png') }}">
                                 @endif
                                 @if ($item->color == 'red' && $item->icono == '🡢')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_derecha_roja.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_derecha_roja.png') }}">
                                 @endif
                                 @if ($item->color == 'blue' && $item->icono == '🡡')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_arriba_azul.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_arriba_azul.png') }}">
                                 @endif
                                 @if ($item->color == 'red' && $item->icono == '🡡')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_arriba_roja.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_arriba_roja.png') }}">
                                 @endif
                                 @if ($item->color == 'blue' && $item->icono == '🡣')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_abajo_azul.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_abajo_azul.png') }}">
                                 @endif
                                 @if ($item->color == 'red' && $item->icono == '🡣')
                                     <img style="margin-left:40%; "
-                                        src="{{ public_path('img/iconoOdontrograma/flecha_abajo_roja.png') }}">
+                                        src="{{ asset('img/iconoOdontrograma/flecha_abajo_roja.png') }}">
                                 @endif
                                 @if ($item->icono == 'X')
                                     <label style="margin-left:40%; color: {{ $item->color }}; font-size: 14pt;">
@@ -300,8 +300,8 @@
                 @foreach ($chequeo->radiografia as $radio)
                     <tr>
                         <td colspan="3">{{ $radio->id }}</td>
-                        <td colspan="3"><img src="{{ public_path('img/radiografias/' . $radio->imagen) }}"
-                                width="100px" alt="">
+                        <td colspan="3"><img src="{{ asset('img/radiografias/' . $radio->imagen) }}" width="100px"
+                                alt="">
                         </td>
 
                     </tr>

@@ -638,7 +638,7 @@
     </style>
 
     <!-- Agrega un enlace a tu archivo de hoja de estilos de impresión -->
-    <link rel="stylesheet" href="{{ asset('public/css/print-styles.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('public/css/print-styles.css') }}"> --}}
 
 
 
